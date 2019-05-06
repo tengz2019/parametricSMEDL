@@ -1,0 +1,18 @@
+System candidateSelection :=
+
+...
+
+ch1: member => mvp.member
+ch2: candidate => mvp.candidate {mvp[1] = candidate[1]}
+ch3: mvp.createVCP => mvcp.createVCP {mvcp[0]=mvp[0]; mvcp[1] = createVCP[0]; 
+                                      mvcp[2] = mvp[1]}
+ch4: rank => mvcp.rank {mvcp[0] = rank[0]; mvcp[1] = rank[1]}
+ch5: mvcp.countC => collectC.countC {collectC[0]=mvcp[0]; collectC[1]=mvcp[2]}
+ch6: mvcp.resultVCP => collectC.resultVCP {collectC[0]=mvcp[0]; collectC[1]=mvcp[2]}
+ch7: collectC.countP => collectP.countP {collectP[0] = collectC[0]}
+ch8: collectC.resultC => collectP.resultC {collectP[0] = collectC[0]}
+ch9: collectP.countV => collectV.countV 
+ch10: collectP.resultP => collectV.resultP
+ch11: end => collectV.end
+ch12: end => mvcp.end
+

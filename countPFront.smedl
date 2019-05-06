@@ -1,0 +1,30 @@
+object countPFront
+
+identity
+string v;
+string p;
+
+
+events
+imported member(string, string);
+imported candidate(string, string);
+exported p_count();
+
+
+scenarios
+
+sce1:
+
+init -> member(voter, party) {raise p_count()} ->s
+
+init -> candidate(candidate, party) {raise p_count()} -> s
+
+
+
+
+
+
+
+
+
+

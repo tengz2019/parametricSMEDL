@@ -1,0 +1,30 @@
+object countP
+
+state
+int count = 0;
+
+
+events
+imported p_count();
+imported end();
+exported pNum(int);
+exported trigger();
+
+
+scenarios
+
+sce1:
+
+s -> p_count() {count ++} -> s
+
+s -> end() {raise pNum(count); raise trigger() } -> s
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,47 @@
+object collectPUni
+
+identity
+string v;
+
+state 
+
+int count = 0;
+int tempResult = 1;
+int pnum = 0;
+
+events
+imported countP();
+imported resultC(int);
+imported pNum(int);
+internal check(int);
+exported countV();
+exported resultP(int);
+
+
+scenarios
+
+sce:
+s -> pNum(i) {pnum = i} -> s
+
+
+sce1:
+
+init -> countP() {raise countV(); count++} -> start
+
+start -> countP() {count++;} -> start
+
+sce2:
+
+init -> resultC(i) when (count < pnum) {raise resultC(0)} -> terminate
+init -> resultC(i) when (count == pnum && count == 1) {raise resultC(tempResult || i)} -> terminate
+init -> resultC(i) when (count == pnum && count > 1) {tempResult = tempResult || i; count--;} ->start
+start -> resultC(i) when(count == 1) {raise resultC(tempResult || i)} -> start 
+start -> resultC(i) when(count > 1) {tempResult = tempResult || i; count--;} -> start
+
+
+
+
+
+
+
+

@@ -1,0 +1,38 @@
+object collectv
+
+
+state 
+
+int count = 0;
+int tempResult = 1;
+
+events
+imported countV();
+imported resultP(int);
+imported end();
+exported result(int);
+
+
+scenarios
+
+sce0:
+s -> end() {raise result(1)} -> s
+
+sce1:
+
+init -> countV() {count++} -> start
+
+start -> countV() {count++;} -> start
+
+sce2:
+
+start -> resultP(i) when(count == 1) {raise result(tempResult && i)} -> start 
+start -> resultP(i) when(count > 1) {tempResult = tempResult && i; count--} -> start
+
+
+
+
+
+
+
+

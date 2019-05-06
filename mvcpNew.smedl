@@ -1,0 +1,30 @@
+object mvcp
+
+identity
+string v;
+string c;
+string p;
+
+
+events
+imported createVCP(string);
+imported rank(string, string, int);
+exported resultVCP(int);
+
+
+scenarios
+
+sce1:
+
+s -> createVCP(can) {raise resultVCP(-1)} -> s3
+
+s3 -> rank(voter, candidate, r) {raise resultVCP(1)} -> s4
+
+
+
+
+
+
+
+
+

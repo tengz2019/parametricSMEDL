@@ -1,0 +1,39 @@
+object collectC
+
+identity
+string v;
+string p;
+
+state 
+
+int count = 0;
+int tempResult = 1;
+
+events
+imported createVP();
+imported trigger();
+imported resultVCP(int);
+exported countP();
+exported resultC(int);
+
+
+scenarios
+
+sce:
+init -> createVP(){raise countP()} -> init
+
+sce1:
+
+start -> resultVCP(i) {tempResult = tempResult + i} -> start 
+
+
+sce2:
+start -> trigger() {raise resultC(tempResult > 0)} -> start 
+
+
+
+
+
+
+
+

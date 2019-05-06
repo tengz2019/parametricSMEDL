@@ -1,0 +1,30 @@
+object mvp
+
+identity
+string v;
+string p;
+
+
+events
+imported member(string, string);
+imported candidate(string, string);
+exported createVCP(string);
+
+
+scenarios
+
+sce1:
+
+s -> member(voter, party){raise createVP()} -> s2
+
+s2 -> candidate(candidate, party) { raise createVCP(candidate)} -> s2
+
+
+
+
+
+
+
+
+
+
